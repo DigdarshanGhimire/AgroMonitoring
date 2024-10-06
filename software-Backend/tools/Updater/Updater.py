@@ -12,7 +12,7 @@ class FireBase:
     def __init__(self) -> None:
         self.cred = credentials.Certificate("configs/firebaseConfig.json") #Path to the config file
         firebase_admin.initialize_app(self.cred, {
-            'storageBucket': 'your-project-id.appspot.com'  
+            'storageBucket': 'agroautomation-cc9c5.appspot.com'  
         })
         self.db = firestore.client()
         self.bucket = storage.bucket()
@@ -38,19 +38,17 @@ class FireBase:
             return None
             
     def update_data(self, data):
-        doc_ref = self.db.collection('stats').document('self.statid')
+        doc_ref = self.db.collection('stats').document(self.statid)
         doc_ref.set(data)
     
     
     def retrieve_image(self):
-        blob = self.bucket.blob('images/your_image_file.jpg')  
+        blob = self.bucket.blob('plants.jpg')  
         image_data = blob.download_as_bytes()
 
-
         image = Image.open(io.BytesIO(image_data))
-        image.show()
 
-        image.save("images/plant.jpg")
+        image.save("images/plants.jpg")
     
     def delete_image(self):
         blob = self.bucket.blob('images/plant.jpg')  
@@ -63,9 +61,5 @@ class FireBase:
 
 if __name__ == "__main__":
     app = FireBase()
+    app.retrieve_image()
     
-    while True:
-        data = app.retrieve_data()
-        
-        print(data)
-        time.sleep(60)

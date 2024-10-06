@@ -6,7 +6,6 @@ import pandas as pd
 import math
 
 
-
 class Retriever:
 	def __init__(self,latitude,longitude) -> None:
 		self.cache_session = requests_cache.CachedSession('.cache', expire_after = 3600)

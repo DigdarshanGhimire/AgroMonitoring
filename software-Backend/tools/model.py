@@ -13,7 +13,7 @@ class Models:
         }
         #self.pest()
         self.disease()
-        self.imgpath = 'images/plant.jpg'
+        self.imgpath = 'images/plants.jpg'
         
         
     # Load the pest model
