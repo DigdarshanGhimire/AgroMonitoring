@@ -34,8 +34,8 @@ if __name__ == "__main__":
         precipitation = retriever.averages[2]
         
         disease = models.predictDisease()
-        pest = "Healthy"
-        #pest = models.predictPest()
+        #pest = "Healthy"
+        pest = models.predictPest()
         
         data.update({"DiseaseStatus":disease,"PestsStatus":pest})
         
